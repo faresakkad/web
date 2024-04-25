@@ -1,1 +1,4 @@
-pip install requests pytelegrambotapi bs4 time
+requests
+pytelegrambotapi
+bs4
+time
