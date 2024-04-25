@@ -3,6 +3,7 @@ import random
 from telebot import types
 import requests
 from bs4 import BeautifulSoup
+from time import sleep
 
 CNY = 'https://www.google.ru/search?q=юань+к+рублю&newwindow=1&sca_esv=779b01740ca52ec5&sca_upv=1&sxsrf=ACQVn0-kFLBrd-ucVrbftIwx0T9lm-A34A%3A1714048562673&ei=Mk4qZvTcKOCzwPAPvquV0AU&udm=&oq=юань&gs_lp=Egxnd3Mtd2l6LXNlcnAiCNGO0LDQvdGMKgIIADIPECMYgAQYJxiKBRhGGIICMgoQIxiABBgnGIoFMgoQIxiABBgnGIoFMgoQABiABBhDGIoFMgUQABiABDIFEAAYgAQyBRAAGIAEMgUQABiABDIKEAAYgAQYFBiHAjIFEAAYgAQyGRAAGIAEGIoFGEYYggIYlwUYjAUY3QTYAQFIyw9QAFi1A3AAeAGQAQCYAZABoAHuA6oBAzAuNLgBAcgBAPgBAZgCBKACugTCAgsQLhiABBjRAxjHAcICBRAuGIAEwgIKEC4YgAQYQxiKBZgDALoGBggBEAEYE5IHAzAuNKAH0kk&sclient=gws-wiz-serp'
 
@@ -113,4 +114,9 @@ def start_1(message):
         bot.send_message(message.chat.id, f'Вы ввели не число, попробуйте ещё раз')
 
 
-bot.polling(non_stop=True, interval=0)
+while True:
+    try:
+        bot.polling(none_stop=True)
+    except Exception as _ex:
+        print(_ex)
+        sleep(15)
